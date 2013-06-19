@@ -419,7 +419,9 @@ class StatsMix
     return if @ignore
     return self.do_udp_request if @use_udp
     #had to add code to support properly encoding array values.  See http://blog.assimov.net/post/653645115/post-put-arrays-with-ruby-net-http-set-form-data
-    p @params
+    if @debugging
+      p @params
+    end
     self.set_form_data(@params)
     @response = @connection.request(@request)
     if @response.is_a?(Net::HTTPClientError)
